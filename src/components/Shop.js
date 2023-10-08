@@ -14,7 +14,6 @@ import CurrentDate from "./CurrentDate";
 //import styles from "./allCSS/productList.css";
 import SearchItem from "./SearchItem";
 
-
 function Shop() {
   //const currentDate = new Date();
 
@@ -129,21 +128,32 @@ function Shop() {
       </div>
 
       {/* weicong - added the SearchItem & <button> tag */}
+
+      <br />
+      <br />
+
       
-      <br />
-      <br />
 
       <div className="itemButtons">
-        <SearchItem onChange={handleSearchItem} className={styles.itemButton}/>
-      </div>
-
-
-      <div className="itemButtons">
-        <button onClick={() => handleCategoryAll()} className="itemButton">All items</button>
-        <button onClick={() => handleCategoryFruit()} className="itemButton">Fruits</button>
-        <button onClick={() => handleCategoryMeat()} className="itemButton">Meats</button>
-        <button onClick={() => handleCategoryVegetable()} className="itemButton">Vegetables</button>
-        <button onClick={() => handleCategoryOthers()} className="itemButton">Others</button>
+      <SearchItem onChange={handleSearchItem} className={styles.itemButton} />
+        <button onClick={() => handleCategoryAll()} className="itemButton">
+          All items
+        </button>
+        <button onClick={() => handleCategoryFruit()} className="itemButton">
+          Fruits
+        </button>
+        <button onClick={() => handleCategoryMeat()} className="itemButton">
+          Meats
+        </button>
+        <button
+          onClick={() => handleCategoryVegetable()}
+          className="itemButton"
+        >
+          Vegetables
+        </button>
+        <button onClick={() => handleCategoryOthers()} className="itemButton">
+          Others
+        </button>
       </div>
 
       <div className="products">
