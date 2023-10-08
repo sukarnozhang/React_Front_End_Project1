@@ -1,8 +1,7 @@
 // shopcontext.js
 
 import { createContext, useEffect, useState } from "react";
-import { PRODUCTS } from "../DummyList";
-
+import PRODUCTS from "../DummyList";
 export const ShopContext = createContext(null);
 
 const getDefaultCart = () => {
@@ -57,6 +56,6 @@ function ShopContextProvider(props) {
       {props.children}
     </ShopContext.Provider>
   );
-};
+}
 
-export default ShopContextProvider
+export default ShopContextProvider;

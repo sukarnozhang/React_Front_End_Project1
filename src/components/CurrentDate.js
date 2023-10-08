@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 function CurrentDate() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -14,7 +14,7 @@ function CurrentDate() {
   }, []);
 
   return (
-    <div>      
+    <div>
       <p>Current Date: {currentDate.toLocaleString()}</p>
     </div>
   );

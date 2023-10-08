@@ -132,10 +132,8 @@ function Shop() {
       <br />
       <br />
 
-      
-
       <div className="itemButtons">
-      <SearchItem onChange={handleSearchItem} className={styles.itemButton} />
+        <SearchItem onChange={handleSearchItem} className={styles.itemButton} />
         <button onClick={() => handleCategoryAll()} className="itemButton">
           All items
         </button>
@@ -157,7 +155,6 @@ function Shop() {
       </div>
 
       <div className="products">
-        {isLoading ? <Product data={filteredItems} /> : null}
         {filteredItems.map((filteredItems) => (
           <Product data={filteredItems} key={filteredItems.id} /> //weicong - Add the id to the key for every items in the list. This is a React requirement
         ))}
