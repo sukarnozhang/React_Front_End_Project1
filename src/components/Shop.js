@@ -7,15 +7,15 @@ import styles from "./Shop.modules.css";
 //import ProductList from './ProductList'
 import ShopContextProvider from "../context/shopcontext";
 
-//Product List        // add by weicong - Render the product list                 
+//Product List        // add by weicong - Render the product list
 import { useState, useEffect } from "react";
 import soonToExpireList from "../api/mockAPI";
-import CurrentDate from './CurrentDate';
+import CurrentDate from "./CurrentDate";
 //import styles from "./allCSS/productList.css";
-import SearchItem from './SearchItem';
+import SearchItem from "./SearchItem";
+
 
 function Shop() {
-
   //const currentDate = new Date();
 
   const [products, setProducts] = useState([]);
@@ -112,42 +112,44 @@ function Shop() {
     setIsLoading(true);
     if (products.length >= 1) {
       console.log("Typing:", value);
-      const searchResult = myProductList.filter((item) => item.item.toLowerCase() === value.toLowerCase());
+      const searchResult = myProductList.filter(
+        (item) => item.item.toLowerCase() === value.toLowerCase()
+      );
       setFilteredItems(searchResult);
       console.log("search result:", searchResult);
     } else {
       console.log("products is empty");
     }
-  }; 
+  };
 
-    return (
-      <div className="shop">
-        <div className="shopTitle">
-          <h1>Food Waste Reducer App</h1>
-        </div>
-        
-        {/* weicong - added the SearchItem & <button> tag */}
-        <SearchItem onChange={handleSearchItem} />      
-        <br/>
-        <br/>
+  return (
+    <div className="shop">
+      <div className="shopTitle">
+        <h1>Food Waste Reducer App</h1>
+      </div>
+
+      {/* weicong - added the SearchItem & <button> tag */}
+      <SearchItem onChange={handleSearchItem} />
+      <br />
+      <br />
+      <div className="itemButton">
         <button onClick={() => handleCategoryAll()}>All items</button>
         <button onClick={() => handleCategoryFruit()}>Fruits</button>
         <button onClick={() => handleCategoryMeat()}>Meats</button>
         <button onClick={() => handleCategoryVegetable()}>Vegetables</button>
         <button onClick={() => handleCategoryOthers()}>Others</button>
-        
-        
-        <div className="products">
-        {isLoading ? (<Product data={filteredItems}/>) : null}
-        {filteredItems.map((filteredItems) => (
-            <Product data={filteredItems} key={filteredItems.id} />         //weicong - Add the id to the key for every items in the list. This is a React requirement
-          ))}
-        </div>  
-        {/* <ShopContextProvider filteredItems={filteredItems} products={products}/> */}
-        <CurrentDate />
-
       </div>
-    );
-  };
 
-export default Shop
+      <div className="products">
+        {isLoading ? <Product data={filteredItems} /> : null}
+        {filteredItems.map((filteredItems) => (
+          <Product data={filteredItems} key={filteredItems.id} /> //weicong - Add the id to the key for every items in the list. This is a React requirement
+        ))}
+      </div>
+      {/* <ShopContextProvider filteredItems={filteredItems} products={products}/> */}
+      <CurrentDate />
+    </div>
+  );
+}
+
+export default Shop;
