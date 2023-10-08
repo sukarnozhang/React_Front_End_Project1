@@ -129,15 +129,21 @@ function Shop() {
       </div>
 
       {/* weicong - added the SearchItem & <button> tag */}
-      <SearchItem onChange={handleSearchItem} />
+      
       <br />
       <br />
-      <div className="itemButton">
-        <button onClick={() => handleCategoryAll()}>All items</button>
-        <button onClick={() => handleCategoryFruit()}>Fruits</button>
-        <button onClick={() => handleCategoryMeat()}>Meats</button>
-        <button onClick={() => handleCategoryVegetable()}>Vegetables</button>
-        <button onClick={() => handleCategoryOthers()}>Others</button>
+
+      <div className="itemButtons">
+        <SearchItem onChange={handleSearchItem} className={styles.itemButton}/>
+      </div>
+
+
+      <div className="itemButtons">
+        <button onClick={() => handleCategoryAll()} className="itemButton">All items</button>
+        <button onClick={() => handleCategoryFruit()} className="itemButton">Fruits</button>
+        <button onClick={() => handleCategoryMeat()} className="itemButton">Meats</button>
+        <button onClick={() => handleCategoryVegetable()} className="itemButton">Vegetables</button>
+        <button onClick={() => handleCategoryOthers()} className="itemButton">Others</button>
       </div>
 
       <div className="products">
