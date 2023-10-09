@@ -27,6 +27,6 @@ function CartItem(props) {
       </div>
     </div>
   );
-};
+}
 
-export default CartItem
+export default CartItem;

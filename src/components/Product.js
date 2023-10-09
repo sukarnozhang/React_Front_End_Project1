@@ -11,18 +11,18 @@ function Product(props) {
 
   return (
     <div className="product">
-      <img src={itemIMG} />     
+      <img src={itemIMG} />
       <div className="description">
         <p>
           <b>{item}</b>
         </p>
-        <p> ${price}</p>
+        <p>${parseFloat(price).toFixed(2)}</p>
       </div>
       <button className="addToCartBttn" onClick={() => addToCart(id)}>
         Add To Cart {cartItemCount > 0 && <> ({cartItemCount})</>}
-      </button>      
+      </button>
     </div>
   );
-};
+}
 
-export default Product
+export default Product;

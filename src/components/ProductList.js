@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 
-
 import soonToExpireList from "../api/mockAPI";
 //import CurrentDate from "./CurrentDate";
 //import styles from "./allCSS/productList.css";
-import SearchItem from './SearchItem';
+import SearchItem from "./SearchItem";
 
 function ProductList() {
   const currentDate = new Date();
@@ -103,7 +102,9 @@ function ProductList() {
     setIsLoading(true);
     if (products.length >= 1) {
       console.log("Typing:", value);
-      const searchResult = myProductList.filter((item) => item.item.toLowerCase() === value.toLowerCase());
+      const searchResult = myProductList.filter(
+        (item) => item.item.toLowerCase() === value.toLowerCase()
+      );
       setFilteredItems(searchResult);
       console.log("search result:", searchResult);
     } else {
@@ -122,35 +123,29 @@ function ProductList() {
   
   */
 
-    const handleExpiry30Days = () => {
-      const myProductList = [...products];
-  
-      if(products.length >= 1) {
-        const expireIn30days = myProductList.map((item) => item.expiryDate);
-  
-      } else{
-        console.log('products list is empty')
-      }  
-  
-    };
+  const handleExpiry30Days = () => {
+    const myProductList = [...products];
 
-    
-
+    if (products.length >= 1) {
+      const expireIn30days = myProductList.map((item) => item.expiryDate);
+    } else {
+      console.log("products list is empty");
+    }
+  };
 
   const handleAddToCart = () => {
     setText("items added");
     setIsDisplay(!isDisplay);
   };
 
-
   return (
     <div className="productList">
       <h1>Clearance Sales</h1>
-     
+
       <SearchItem onChange={handleSearchItem} />
-      <br/>
-      <br/>
-      
+      <br />
+      <br />
+
       <button onClick={() => handleCategoryAll()}>All items</button>
       <button onClick={() => handleCategoryFruit()}>Fruits</button>
       <button onClick={() => handleCategoryMeat()}>Meats</button>
@@ -159,16 +154,13 @@ function ProductList() {
       <button onClick={() => handleAddToCart()}>Add to cart</button>
       {isDisplay && <p>{text}</p>}
 
-      <br/>
-      <br/>
-      <div className ="sortExpiryDate">
+      <br />
+      <br />
+      <div className="sortExpiryDate">
         <button>Expire in 30 days</button>
         <button>Expire in 60 Days</button>
         <button>Expire in 90 Days</button>
       </div>
-
-      
-
 
       {products.length === 0 && (
         <p>
@@ -176,35 +168,34 @@ function ProductList() {
         </p>
       )}
 
-
       {/* using this table to loop through all items in filteredItems */}
       {isLoading ? (
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Item</th>
-            <th>itemIMG</th>
-            <th>Expiry date</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredItems.length > 0 &&
-            filteredItems.map((item) => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.item}</td>
-                <td>
-                  <img src={item.itemIMG} />
-                </td>
-                <td>{item.expiryDate}</td>
-                <td>{item.price}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-      ) : null }
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Item</th>
+              <th>itemIMG</th>
+              <th>Expiry date</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredItems.length > 0 &&
+              filteredItems.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.id}</td>
+                  <td>{item.item}</td>
+                  <td>
+                    <img src={item.itemIMG} />
+                  </td>
+                  <td>{item.expiryDate}</td>
+                  <td>{item.price}</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      ) : null}
 
       {/* See which one to use */}
       {/* <p>{currentDate.toDateString()}</p> */}

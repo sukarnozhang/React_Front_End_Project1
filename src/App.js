@@ -13,11 +13,11 @@ function App() {
     <div className="App">
       <ShopContextProvider>
         <Router>
-          <Navbar />          
+          <Navbar />
           <Routes>
             <Route path="/" element={<Shop />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/payment" element={<Payment/>} />
+            <Route path="/payment" element={<Payment />} />
           </Routes>
         </Router>
       </ShopContextProvider>
