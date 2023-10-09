@@ -3,15 +3,14 @@
 //import { PRODUCTS }  from "../DummyList";
 //import { ProductList }  from "../components/ProductList";
 import Product from "./Product";
-import styles from "./Shop.modules.css";
+import styles from "../allCssStyling/Shop.modules.css";
 //import ProductList from './ProductList'
 import ShopContextProvider from "../context/shopcontext";
 
-//Product List        // add by weicong - Render the product list
+//ProductList.js        // add by weicong - Render the product list
 import { useState, useEffect } from "react";
-import soonToExpireList from "../api/soonToExpireList.js";
+import soonToExpireAPI from "../api/soonToExpireAPI.js";
 import CurrentDateTime from "./CurrentDateTime";
-//import styles from "./allCSS/productList.css";
 import SearchItem from "./SearchItem";
 
 function Shop() {
@@ -27,7 +26,7 @@ function Shop() {
 
   const getAllProducts = async () => {
     try {
-      const response = await soonToExpireList.get("/products");
+      const response = await soonToExpireAPI.get("/products");
       console.log(response.data);
       setProducts(response.data);
 

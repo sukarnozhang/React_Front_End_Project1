@@ -5,7 +5,7 @@ import { ShopContext } from "../context/shopcontext";
 import PRODUCTS from "../DummyList";
 import { useNavigate } from "react-router-dom";
 import CartItem from "./CartItems";
-import styles from "./Cart.modules.css";
+import styles from "../allCssStyling/Cart.modules.css";
 
 function Cart() {
   const { cartItems, getTotalCartAmount, checkout } = useContext(ShopContext);
