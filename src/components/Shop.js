@@ -9,8 +9,8 @@ import ShopContextProvider from "../context/shopcontext";
 
 //Product List        // add by weicong - Render the product list
 import { useState, useEffect } from "react";
-import soonToExpireList from "../api/mockAPI";
-import CurrentDate from "./CurrentDate";
+import soonToExpireList from "../api/soonToExpireList.js";
+import CurrentDateTime from "./CurrentDateTime";
 //import styles from "./allCSS/productList.css";
 import SearchItem from "./SearchItem";
 
@@ -160,7 +160,7 @@ function Shop() {
         ))}
       </div>
       {/* <ShopContextProvider filteredItems={filteredItems} products={products}/> */}
-      <CurrentDate />
+      <CurrentDateTime />
     </div>
   );
 }
