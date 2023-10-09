@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./SearchItem.modules.css";
+import styles from "../allCssStyling/SearchItem.modules.css";
 
 function SearchItem({ value, label, onChange }) {
   // const handleChange = (event) => {       //PartA: declare this handler if not using inline version

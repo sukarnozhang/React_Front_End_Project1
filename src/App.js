@@ -1,6 +1,6 @@
 // App.js
 
-import styles from "./App.css";
+import styles from "./allCssStyling/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Shop from "./components/Shop";

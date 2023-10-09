@@ -2,7 +2,7 @@
 
 import { Link } from "react-router-dom";
 import { House, ShoppingCart } from "phosphor-react";
-import styles from "./Navbar.modules.css";
+import styles from "../allCssStyling/Navbar.modules.css";
 
 function Navbar() {
   return (
