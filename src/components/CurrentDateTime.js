@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-function CurrentDate() {
-  const [currentDate, setCurrentDate] = useState(new Date());
+function CurrentDateTime() {
+  const [currentDateTime, setCurrentDateTime] = useState(new Date());
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentDate(new Date());
+      setCurrentDateTime(new Date());
     }, 1000); // Update every second
 
     return () => {
@@ -15,9 +15,9 @@ function CurrentDate() {
 
   return (
     <div>
-      <p>Current Date: {currentDate.toLocaleString()}</p>
+      <p>Current Date: {currentDateTime.toLocaleString()}</p>
     </div>
   );
 }
 
-export default CurrentDate;
+export default CurrentDateTime;
