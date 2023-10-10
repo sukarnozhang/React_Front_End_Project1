@@ -13,7 +13,7 @@ function Navbar() {
         </Link>
         <Link to="/cart">
           <ShoppingCart size={32} />
-        </Link>
+        </Link>      
       </div>
     </div>
   );

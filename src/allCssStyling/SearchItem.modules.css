@@ -1,17 +1,66 @@
-.itemButtons {
+.searchItems {
   text-align: center;
-}
-
-.itemButton {
-
-  background-color: #4caf50; /* Green */
+  margin: 10px 10px 10px 10px;
   border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
+  outline: none;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: lightgrey;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  width: 50%;
+  font-size: 32px;
 }
+
+
+/* magnifying-icon for search input */
+/* .search-items-container {
+  position: relative;
+} */
+.search-input {
+  padding-right: 50px; /* Adjust as needed */
+}
+/*
+.search-icon {
+
+  /* position: absolute;
+  top: 330px; 
+  left: 210px;   
+  cursor: pointer;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;   */
+
+  /* old code
+  position: absolute;
+  top: 150px;
+  left: 325px; 
+  transform: translateY(-50%);
+  cursor: pointer;
+  padding: 5px 10px;
+  width: 100%;  
+  
+}
+*/
+
+#responsive-icon {
+  width: auto;
+  height: auto;
+}
+
+
+/* End of magnifying-icon for search input */
+
+
+/* blue rim around the search input */
+.searchItems {
+  border: 3px solid #ccc; /* Default border color */
+  padding: 10px;
+  transition: border-color 0.3s; /* Add a smooth transition effect */
+}
+.searchItems:focus {
+  border-color: #007bff; /* Change the border color when input is focused */
+  outline: none; /* Remove the default focus outline (optional) */
+}
+/* end of blue rim around the search input */

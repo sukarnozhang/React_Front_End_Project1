@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "../allCssStyling/SearchItem.modules.css";
+import { MagnifyingGlass } from "phosphor-react";
+
 
 function SearchItem({ value, label, onChange }) {
   // const handleChange = (event) => {       //PartA: declare this handler if not using inline version
@@ -8,17 +10,21 @@ function SearchItem({ value, label, onChange }) {
   //   }
 
   return (
-    <div className="itemButto">
+    <div className="search-items-container">
       {/* PartA Code: <input value={value} onChange={handleChange}/> */}
 
-      {/* Inline version of passing a onChange handler to  */}
+      {/* Inline version of passing a onChange handler to  */}      
       <input
         value={value}
         label={label}
         placeholder="search items..."
         onChange={(e) => onChange(e.target.value)}
-        className="itemButton"
+        className="searchItems"
       />
+
+      {/* <img src={searchIcon} alt="Search" className="search-icon" /> */}
+      {/* <MagnifyingGlass size={32} className="search-icon" id="responsive-icon"/> */}
+
     </div>
   );
 }
