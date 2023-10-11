@@ -12,6 +12,8 @@ import { useState, useEffect } from "react";
 import soonToExpireAPI from "../api/soonToExpireAPI.js";
 import CurrentDateTime from "./CurrentDateTime";
 import SearchItem from "./SearchItem";
+import Button from "./Button";
+
 
 function Shop() {
   //const currentDate = new Date();
@@ -41,6 +43,24 @@ function Shop() {
     console.log("Effect running");
     getAllProducts();
   }, []);
+
+
+  const handleSearchItem = (value) => {
+    setSearchItem(value);
+
+    const myProductList = [...products];
+    setIsLoading(true);
+    if (products.length >= 1) {
+      console.log("Typing:", value);
+      const searchResult = myProductList.filter(
+        (item) => item.item.toLowerCase() === value.toLowerCase()
+      );
+      setFilteredItems(searchResult);
+      console.log("search result:", searchResult);
+    } else {
+      console.log("products is empty");
+    }
+  };
 
   const handleCategoryAll = () => {
     const myProductList = [...products];
@@ -103,22 +123,6 @@ function Shop() {
     }
   };
 
-  const handleSearchItem = (value) => {
-    setSearchItem(value);
-
-    const myProductList = [...products];
-    setIsLoading(true);
-    if (products.length >= 1) {
-      console.log("Typing:", value);
-      const searchResult = myProductList.filter(
-        (item) => item.item.toLowerCase() === value.toLowerCase()
-      );
-      setFilteredItems(searchResult);
-      console.log("search result:", searchResult);
-    } else {
-      console.log("products is empty");
-    }
-  };
 
   return (
     <div className="shop">
@@ -127,30 +131,14 @@ function Shop() {
       </div>
 
       {/* weicong - added the SearchItem & <button> tag */}
+      <div className="mySearchandFilter">
+        <SearchItem onChange={handleSearchItem} />
 
-      <br />
-      <br />
-
-      <div className="itemButtons">
-        <SearchItem onChange={handleSearchItem} className={styles.itemButton} />
-        <button onClick={() => handleCategoryAll()} className="itemButton">
-          All items
-        </button>
-        <button onClick={() => handleCategoryFruit()} className="itemButton">
-          Fruits
-        </button>
-        <button onClick={() => handleCategoryMeat()} className="itemButton">
-          Meats
-        </button>
-        <button
-          onClick={() => handleCategoryVegetable()}
-          className="itemButton"
-        >
-          Vegetables
-        </button>
-        <button onClick={() => handleCategoryOthers()} className="itemButton">
-          Others
-        </button>
+        <Button label= "All items" onClick= {() => handleCategoryAll()} />        
+        <Button label= "Fruits" onClick= {() => handleCategoryFruit()} />         
+        <Button label= "Meats" onClick= {() => handleCategoryMeat()} />     
+        <Button label= "Vegetables" onClick= {() => handleCategoryVegetable()} />
+        <Button label= "Others" onClick= {() => handleCategoryOthers()} />
       </div>
 
       <div className="products">
@@ -160,6 +148,8 @@ function Shop() {
       </div>
       {/* <ShopContextProvider filteredItems={filteredItems} products={products}/> */}
       <CurrentDateTime />
+      
+
     </div>
   );
 }
