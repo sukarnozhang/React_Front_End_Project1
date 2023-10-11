@@ -12,7 +12,8 @@ import { useState, useEffect } from "react";
 import soonToExpireAPI from "../api/soonToExpireAPI.js";
 import CurrentDateTime from "./CurrentDateTime";
 import SearchItem from "./SearchItem";
-import Button from "./Button";
+import Button2 from "./Button";
+
 
 
 function Shop() {
@@ -134,11 +135,11 @@ function Shop() {
       <div className="mySearchandFilter">
         <SearchItem onChange={handleSearchItem} />
 
-        <Button label= "All items" onClick= {() => handleCategoryAll()} />        
-        <Button label= "Fruits" onClick= {() => handleCategoryFruit()} />         
-        <Button label= "Meats" onClick= {() => handleCategoryMeat()} />     
-        <Button label= "Vegetables" onClick= {() => handleCategoryVegetable()} />
-        <Button label= "Others" onClick= {() => handleCategoryOthers()} />
+        <Button2 label= "All items" onClick= {() => handleCategoryAll()} />        
+        <Button2 label= "Fruits" onClick= {() => handleCategoryFruit()} />         
+        <Button2 label= "Meats" onClick= {() => handleCategoryMeat()} />     
+        <Button2 label= "Vegetables" onClick= {() => handleCategoryVegetable()} />
+        <Button2 label= "Others" onClick= {() => handleCategoryOthers()} />
       </div>
 
       <div className="products">

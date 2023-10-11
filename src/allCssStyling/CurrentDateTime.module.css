@@ -1,6 +1,6 @@
 .currentDateTime{  
   position: absolute;
-  top: 75px; /* Adjust as needed to position it vertically */
+  top: 85px; /* Adjust as needed to position it vertically */
   right: 10px; /* Adjust as needed to position it horizontally */
   background-color: rgba(0, 0, 0, 0.7);
   color: white;

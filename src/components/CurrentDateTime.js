@@ -17,6 +17,7 @@ function CurrentDateTime() {
 
   return (
     <div>
+      
       <p className={styles.currentDateTime}>Current Date: {currentDateTime.toLocaleString()}</p>     
     </div>
   );

@@ -1,13 +1,17 @@
 import React from "react";
 import styles from '../allCssStyling/Button.module.css';
 
-function Button({onClick, label}){    
+import Button from 'react-bootstrap/Button';
+// Importing the Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+function Button2({onClick, label}){    
     
     return(
         <>
-            <button className={styles.itemButton} onClick={onClick}>{label}</button>        
-        </>
+            <Button  onClick={onClick} variant="outline-primary"> {label} </Button> {' '}     
+        </> 
     );
 }
 
-export default Button;
+export default Button2;
