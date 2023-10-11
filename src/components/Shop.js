@@ -134,7 +134,7 @@ function Shop() {
       {/* weicong - added the SearchItem & <button> tag */}
       <div className="mySearchandFilter">
         <SearchItem onChange={handleSearchItem} />
-
+        <br />
         <Button2 label= "All items" onClick= {() => handleCategoryAll()} />        
         <Button2 label= "Fruits" onClick= {() => handleCategoryFruit()} />         
         <Button2 label= "Meats" onClick= {() => handleCategoryMeat()} />     

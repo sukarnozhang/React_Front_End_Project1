@@ -13,6 +13,13 @@
   font-size: 32px;
 }
 
+.searchItems2 {
+  margin-right:auto;
+  margin-left:auto;
+  width:200px;
+
+
+}
 
 /* magnifying-icon for search input */
 /* .search-items-container {
@@ -32,7 +39,7 @@
   padding: 5px 10px;
   border-radius: 5px;   */
 
-  /* old code
+/* old code
   position: absolute;
   top: 150px;
   left: 325px; 
@@ -49,9 +56,7 @@
   height: auto;
 }
 
-
 /* End of magnifying-icon for search input */
-
 
 /* blue rim around the search input */
 .searchItems {
