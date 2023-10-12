@@ -9,11 +9,17 @@ function Navbar() {
     <div className="navbar">
       <div className="links">
         <Link to="/">
-          <House size={32} />
+          <House
+            size={32}
+            style={{ display: "flex", justifyContent: "flex-end" }}
+          />
         </Link>
         <Link to="/cart">
-          <ShoppingCart size={32} />
-        </Link>      
+          <ShoppingCart
+            size={32}
+            style={{ display: "flex", justifyContent: "flex-end" }}
+          />
+        </Link>
       </div>
     </div>
   );
