@@ -1,4 +1,5 @@
 .searchItems {
+  position: relative;
   text-align: center;
   margin: 10px 10px 10px 10px;
   border: none;
@@ -17,39 +18,29 @@
   margin-right:auto;
   margin-left:auto;
   width:200px;
-
-
 }
 
 /* magnifying-icon for search input */
 /* .search-items-container {
   position: relative;
 } */
-.search-input {
-  padding-right: 50px; /* Adjust as needed */
-}
-/*
-.search-icon {
 
-  /* position: absolute;
-  top: 330px; 
-  left: 210px;   
-  cursor: pointer;
-  color: black;
-  padding: 5px 10px;
-  border-radius: 5px;   */
+.search-input {
+  padding-right: 50px; /* Adjust as needed */  
+}
+
 
 /* old code
+.search-icon{
   position: absolute;
   top: 150px;
   left: 325px; 
   transform: translateY(-50%);
   cursor: pointer;
   padding: 5px 10px;
-  width: 100%;  
-  
-}
-*/
+  width: 100%;    
+} */
+
 
 #responsive-icon {
   width: auto;
@@ -60,7 +51,7 @@
 
 /* blue rim around the search input */
 .searchItems {
-  border: 3px solid #ccc; /* Default border color */
+  border: 3px solid black; /* Default border color #ccc */
   padding: 10px;
   transition: border-color 0.3s; /* Add a smooth transition effect */
 }

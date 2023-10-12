@@ -11,7 +11,7 @@ function Recipe() {
 
   const fetchDetails = async () => {
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/${params.name}/information?apiKey=deb54138ae1b4a7f9b6ff3b539554ada`
+      `https://api.spoonacular.com/recipes/${params.name}/information?apiKey=90d72e8507a64cf29e7a9e752eb54c10`
     );
     const detailData = await data.json();
     setDetails(detailData);
@@ -90,12 +90,17 @@ const DetailWrapper = styled.div`
 `;
 
 const Button = styled.button`
-  padding: 1rem 2rem;
-  color: #313131;
-  background: white;
-  border: 2px solid black;
-  margin-right: 2rem;
-  font-weight: 600;
+  background-color: white; /* Green */
+  border: 2px solid; /* Default border color */
+  color: #662eed;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px;
 `;
 
 const Info = styled.div`
