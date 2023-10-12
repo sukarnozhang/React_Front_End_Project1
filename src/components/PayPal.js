@@ -1,3 +1,5 @@
+// PayPal.js
+
 import {
   PayPalScriptProvider,
   PayPalButtons,

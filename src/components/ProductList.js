@@ -1,3 +1,5 @@
+// ProductList.js
+
 import { useState, useEffect } from "react";
 
 import soonToExpireList from "../api/mockAPI";

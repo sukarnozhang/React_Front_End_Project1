@@ -1,4 +1,5 @@
-import React from "react";
+// SearchItem.js
+
 import styles from "../allCssStyling/SearchItem.modules.css";
 import { MagnifyingGlass } from "phosphor-react";
 import Form from "react-bootstrap/Form";

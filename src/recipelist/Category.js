@@ -1,3 +1,5 @@
+// Category.js
+
 import { FaAppleAlt, FaCarrot, FaInfinity } from "react-icons/fa";
 import { GiRoastChicken } from "react-icons/gi";
 import styled from "styled-components";
