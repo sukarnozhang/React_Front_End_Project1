@@ -1,19 +1,36 @@
 import React from "react";
-import styles from "../allCssStyling/Button.module.css";
+import styles from '../allCssStyling/Button.module.css';
 
-import Button from "react-bootstrap/Button";
-// Importing the Bootstrap CSS
-import "bootstrap/dist/css/bootstrap.min.css";
-
-function Button2({ onClick, label }) {
-  return (
-    <>
-      <Button onClick={onClick} variant="outline-primary">
-        {" "}
-        {label}{" "}
-      </Button>{" "}
-    </>
-  );
+function Button({onClick, label}){    
+    
+    return(
+        <>
+            <button className={styles.itemButton} onClick={onClick}>{label}</button>        
+        </>
+    );
 }
 
-export default Button2;
+export default Button;
+
+
+//Activate below for bootstrap styling
+
+// import React from "react";
+// import styles from "../allCssStyling/Button.module.css";
+
+// import Button from "react-bootstrap/Button";
+// // Importing the Bootstrap CSS
+// import "bootstrap/dist/css/bootstrap.min.css";
+
+// function Button2({ onClick, label }) {
+//   return (
+//     <>
+//       <Button onClick={onClick} variant="outline-primary">
+//         {" "}
+//         {label}{" "}
+//       </Button>{" "}
+//     </>
+//   );
+// }
+
+// export default Button2;
