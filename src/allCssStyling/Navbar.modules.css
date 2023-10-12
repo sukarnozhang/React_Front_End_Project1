@@ -13,8 +13,6 @@
     margin-right: 50px;
     display: flex;
     align-items: center;
-
-    
   }
   
   .links a {
@@ -22,8 +20,5 @@
     color: rgb(0, 0, 0);
     margin-left: 20px;
     font-size: 25px;
-    justify-content: flex-end;
-    position: relative;
-  height: 20px;
   }
   

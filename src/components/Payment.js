@@ -1,14 +1,25 @@
 // Payment.js
-// Incomplete
 
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import { useState } from "react";
+import PayPal from "./PayPal";
+import styles from "../allCssStyling/Payment.module.css";
 
 function Payment() {
+  const [checkout, setCheckout] = useState(false);
+
   return (
-    <div>
-      <h4>Payment Page Test</h4>
+    <div className="payment">
+      {checkout ? (
+        <PayPal />
+      ) : (
+        <button
+          onClick={() => {
+            setCheckout(true);
+          }}
+        >
+          Click to Payment
+        </button>
+      )}
     </div>
   );
 }

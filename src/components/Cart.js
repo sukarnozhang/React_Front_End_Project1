@@ -30,15 +30,7 @@ function Cart() {
         <div className="checkout">
           <p> Subtotal: ${totalAmount} </p>
           <button onClick={() => navigate("/")}> Continue Shopping </button>
-          <button
-            onClick={() => {
-              checkout();
-              navigate("/checkout");
-            }}
-          >
-            {" "}
-            Checkout{" "}
-          </button>
+          <button onClick={() => navigate("/payment")}> Checkout </button>
         </div>
       ) : (
         <h1>Shopping Cart is Empty</h1>
@@ -47,4 +39,5 @@ function Cart() {
   );
 }
 
+//
 export default Cart;
