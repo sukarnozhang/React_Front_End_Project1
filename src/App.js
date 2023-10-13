@@ -11,6 +11,7 @@ import Category from "./components/Category";
 import Ingredients from "./recipelist/Ingredients";
 import Recipe from "./recipelist/Recipe";
 import Pages from "./recipelist/Pages";
+import Logo from "./logo";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <ShopContextProvider>
         <Router>
           <Navbar />
+          {/* <Logo /> */}
           <Routes>
             <Route path="/" element={<Shop />} />
             <Route path="/cart" element={<Cart />} />

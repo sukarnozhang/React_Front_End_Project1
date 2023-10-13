@@ -1,6 +1,6 @@
 // Shop.js
 
-import axios from 'axios';
+import axios from "axios";
 import { useState, useEffect } from "react";
 
 //import { PRODUCTS }  from "../DummyList";
@@ -14,6 +14,7 @@ import soonToExpireAPI from "../api/soonToExpireAPI.js";
 import CurrentDateTime from "./CurrentDateTime";
 import SearchItem from "./SearchItem";
 import Button2 from "./Button";
+import Logo from "../logo";
 import { NavLink } from "react-router-dom";
 import { FaAppleAlt, FaCarrot, FaInfinity } from "react-icons/fa";
 import { GiRoastChicken } from "react-icons/gi";
@@ -24,7 +25,7 @@ function Shop() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [filteredItems, setFilteredItems] = useState([]); //used for rendering only
-  const [searchItem, setSearchItem] = useState(""); 
+  const [searchItem, setSearchItem] = useState("");
   const [expiryMonth, setExpiryMonth] = useState(false); //used this state to track if user clicked on the expiry month
   const [todayDate, setTodayDate] = useState("");
   const [soonToExpireItems, setSoonToExpireItems] = useState([]); //used for sharing the value around
@@ -56,7 +57,7 @@ function Shop() {
     const appId = process.env.REACT_APP_RECEIPE_APP_ID;
     const appKey = process.env.REACT_APP_RECEIPE_APP_KEY;
     setSearchItem(value);
-       
+
     const myProductList = [...products];
     setIsLoading(true);
     if (products.length >= 1) {
@@ -71,15 +72,16 @@ function Shop() {
     }
 
     const endpoint = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchItem}&app_id=${appId}&app_key=${appKey}`;
-    axios.get(endpoint)
-        .then(response => {
-            const recipes = response.data.hits.map(hit => hit.recipe);
-            setRecipes(recipes);
-        })
-        .catch(error => {
-            console.error('Error fetching recipes:', error);
-        }); 
-        console.log('my returned recipes:', recipes);      
+    axios
+      .get(endpoint)
+      .then((response) => {
+        const recipes = response.data.hits.map((hit) => hit.recipe);
+        setRecipes(recipes);
+      })
+      .catch((error) => {
+        console.error("Error fetching recipes:", error);
+      });
+    console.log("my returned recipes:", recipes);
   };
 
   const handleCategoryAll = () => {
@@ -182,7 +184,7 @@ function Shop() {
   };
 
   const handleExpiry30Days = () => {
-    const myProductList = [...products];   
+    const myProductList = [...products];
     const soonToExpireItems = [];
 
     //if(expiryMonth===true) {setExpiryButton(false);}
@@ -205,7 +207,7 @@ function Shop() {
   };
 
   const handleExpiry60Days = () => {
-    const myProductList = [...products];  
+    const myProductList = [...products];
     const soonToExpireItems = [];
 
     if (products.length >= 1) {
@@ -226,7 +228,7 @@ function Shop() {
   };
 
   const handleExpiry90Days = () => {
-    const myProductList = [...products];  
+    const myProductList = [...products];
     const soonToExpireItems = [];
 
     if (products.length >= 1) {
@@ -249,13 +251,12 @@ function Shop() {
   return (
     <div className="shop">
       <div className="shopTitle">
-        <h1>Food Waste Reducer App</h1>
+        <Logo />
       </div>
 
       {/* weicong - added the SearchItem & <button> tag */}
       {console.log("Child data from CurrentDateTime:", todayDate)}
       <CurrentDateTime sendDataToParent={receiveDataFromChild} />
-
 
       <div className="mySearchandFilter">
         <SearchItem onChange={handleSearchItem} />
@@ -288,14 +289,22 @@ function Shop() {
         ))}
       </div>
 
-      <div>           
-        {recipes.length >= 1 ? <h1 style={{textAlign: 'center'}}>Recipes Available</h1> : null}
-          {handleSearchItem}           
+      <div>
+        {recipes.length >= 1 ? (
+          <h1 style={{ textAlign: "center" }}>Recipes Available</h1>
+        ) : null}
+        {handleSearchItem}
         <ul>
-            {recipes.map((recipe, index) => (
-                <li key={index}>{recipe.label}<br /><a href={recipe.url} target="_blank" rel="noreferrer"><img src={recipe.images.REGULAR.url} /></a></li>
-            ))}                
-        </ul>            
+          {recipes.map((recipe, index) => (
+            <li key={index}>
+              {recipe.label}
+              <br />
+              <a href={recipe.url} target="_blank" rel="noreferrer">
+                <img src={recipe.images.REGULAR.url} />
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
       {/* <ShopContextProvider filteredItems={filteredItems} products={products}/> */}
     </div>
