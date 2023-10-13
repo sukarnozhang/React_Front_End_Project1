@@ -221,7 +221,8 @@ function Shop() {
         setSoonToExpireItems(soonToExpireItems); //to store the items in state so it can be pass around
         setFilteredItems(soonToExpireItems); //for rendering the display of items expiry = 30days
       }
-      console.log(soonToExpireItems);
+      console.log("2 month expiry:", soonToExpireItems);
+      console.log("is expiry button clicked?", expiryMonth);
     } else {
       console.log("products list is empty");
     }
@@ -242,7 +243,8 @@ function Shop() {
         setSoonToExpireItems(soonToExpireItems); //to store the items in state so it can be pass around
         setFilteredItems(soonToExpireItems); //for rendering the display of items expiry = 30days
       }
-      console.log(soonToExpireItems);
+      console.log("3 month expiry:", soonToExpireItems);
+      console.log("is expiry button clicked?", expiryMonth);
     } else {
       console.log("products list is empty");
     }
