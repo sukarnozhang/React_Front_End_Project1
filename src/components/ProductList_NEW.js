@@ -1,15 +1,15 @@
 // Shop.js
 
-import axios from 'axios';
-import { useState, useEffect } from "react";
-
 //import { PRODUCTS }  from "../DummyList";
 //import { ProductList }  from "../components/ProductList";
-//import ProductList from './ProductList'
-import styles from "../allCssStyling/Shop.modules.css";
-import ShopContextProvider from "../context/shopcontext";
-
 import Product from "./Product";
+import styles from "../allCssStyling/Shop.modules.css";
+//import ProductList from './ProductList'
+import ShopContextProvider from "../context/shopcontext";
+import Shop from "./Shop.js.bakk";
+
+//ProductList.js        // add by weicong - Render the product list
+import { useState, useEffect } from "react";
 import soonToExpireAPI from "../api/soonToExpireAPI.js";
 import CurrentDateTime from "./CurrentDateTime";
 import SearchItem from "./SearchItem";
@@ -17,22 +17,19 @@ import Button2 from "./Button";
 import { NavLink } from "react-router-dom";
 import { FaAppleAlt, FaCarrot, FaInfinity } from "react-icons/fa";
 import { GiRoastChicken } from "react-icons/gi";
+//import ProductList from './ProductList';
 
-function Shop() {
+function ProductList_NEW() {
   //const currentDate = new Date();
 
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [filteredItems, setFilteredItems] = useState([]); //used for rendering only
-  const [searchItem, setSearchItem] = useState(""); 
+  const [searchItem, setSearchItem] = useState("");
   const [expiryMonth, setExpiryMonth] = useState(false); //used this state to track if user clicked on the expiry month
   const [todayDate, setTodayDate] = useState("");
   const [soonToExpireItems, setSoonToExpireItems] = useState([]); //used for sharing the value around
   const [expiryButton, setExpiryButton] = useState(true);
-  const [recipes, setRecipes] = useState([]);
-  const oneMonth = 2592000000;
-  const twoMonth = 5184000000;
-  const threeMonth = 7776000000;
 
   const getAllProducts = async () => {
     try {
@@ -53,10 +50,8 @@ function Shop() {
   }, []);
 
   const handleSearchItem = (value) => {
-    const appId = process.env.REACT_APP_RECEIPE_APP_ID;
-    const appKey = process.env.REACT_APP_RECEIPE_APP_KEY;
     setSearchItem(value);
-       
+
     const myProductList = [...products];
     setIsLoading(true);
     if (products.length >= 1) {
@@ -69,17 +64,6 @@ function Shop() {
     } else {
       console.log("products is empty");
     }
-
-    const endpoint = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchItem}&app_id=${appId}&app_key=${appKey}`;
-    axios.get(endpoint)
-        .then(response => {
-            const recipes = response.data.hits.map(hit => hit.recipe);
-            setRecipes(recipes);
-        })
-        .catch(error => {
-            console.error('Error fetching recipes:', error);
-        }); 
-        console.log('my returned recipes:', recipes);      
   };
 
   const handleCategoryAll = () => {
@@ -182,7 +166,8 @@ function Shop() {
   };
 
   const handleExpiry30Days = () => {
-    const myProductList = [...products];   
+    const myProductList = [...products];
+    const oneMonth = 2592000000;
     const soonToExpireItems = [];
 
     //if(expiryMonth===true) {setExpiryButton(false);}
@@ -205,13 +190,15 @@ function Shop() {
   };
 
   const handleExpiry60Days = () => {
-    const myProductList = [...products];  
+    const myProductList = [...products];
+    const oneMonth = 2592000000;
+    const twoMonth = 5184000000;
     const soonToExpireItems = [];
 
     if (products.length >= 1) {
       for (let i = 0; i < myProductList.length - 1; i++) {
         if (
-          Date.parse(myProductList[i].expiryDate) - todayDate > oneMonth &&
+          Date.parse(myProductList[i].expiryDate) - todayDate >= oneMonth &&
           Date.parse(myProductList[i].expiryDate) - todayDate <= twoMonth
         ) {
           soonToExpireItems.push(myProductList[i]);
@@ -226,13 +213,15 @@ function Shop() {
   };
 
   const handleExpiry90Days = () => {
-    const myProductList = [...products];  
+    const myProductList = [...products];
+    const twoMonth = 5184000000;
+    const threeMonth = 7776000000;
     const soonToExpireItems = [];
 
     if (products.length >= 1) {
       for (let i = 0; i < myProductList.length - 1; i++) {
         if (
-          Date.parse(myProductList[i].expiryDate) - todayDate > twoMonth &&
+          Date.parse(myProductList[i].expiryDate) - todayDate >= twoMonth &&
           Date.parse(myProductList[i].expiryDate) - todayDate <= threeMonth
         ) {
           soonToExpireItems.push(myProductList[i]);
@@ -252,10 +241,18 @@ function Shop() {
         <h1>Food Waste Reducer App</h1>
       </div>
 
+      <Shop 
+        products={products} 
+        filteredItems={filteredItems} 
+        setSearchItem={searchItem} 
+        expiryMonth={expiryMonth}
+        todayDate={todayDate}
+        soonToExpireItems={soonToExpireItems}
+      />
+
       {/* weicong - added the SearchItem & <button> tag */}
       {console.log("Child data from CurrentDateTime:", todayDate)}
       <CurrentDateTime sendDataToParent={receiveDataFromChild} />
-
 
       <div className="mySearchandFilter">
         <SearchItem onChange={handleSearchItem} />
@@ -287,19 +284,11 @@ function Shop() {
           <Product data={filteredItems} key={filteredItems.id} /> //weicong - Add the id to the key for every items in the list. This is a React requirement
         ))}
       </div>
-
-      <div>           
-        {recipes.length >= 1 ? <h1 style={{textAlign: 'center'}}>Recipes Available</h1> : null}
-          {handleSearchItem}           
-        <ul>
-            {recipes.map((recipe, index) => (
-                <li key={index}>{recipe.label}<br /><a href={recipe.url} target="_blank" rel="noreferrer"><img src={recipe.images.REGULAR.url} /></a></li>
-            ))}                
-        </ul>            
-      </div>
       {/* <ShopContextProvider filteredItems={filteredItems} products={products}/> */}
     </div>
   );
 }
 
-export default Shop;
+//
+
+export default ProductList_NEW;

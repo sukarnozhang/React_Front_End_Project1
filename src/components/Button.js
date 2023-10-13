@@ -2,6 +2,16 @@ import React from "react";
 import styles from "../allCssStyling/Button.module.css";
 
 function Button({ onClick, label }) {
+  
+  // new code
+  const handleClick = () => {
+    
+   
+
+    // Perform the second action
+    console.log('Action 2 executed');
+  };
+
   return (
     <>
       <button className={styles.itemButton} onClick={onClick}>
