@@ -1,25 +1,25 @@
 import React from "react";
-import styles from '../allCssStyling/Button.module.css';
+import styles from "../allCssStyling/Button.module.css";
 
-function Button({onClick, label}){    
-    
-    return(
-        <>
-            <button className={styles.itemButton} onClick={onClick}>{label}</button>        
-        </>
-    );
+function Button({ onClick, label }) {
+  return (
+    <>
+      <button className={styles.itemButton} onClick={onClick}>
+        {label}
+      </button>
+    </>
+  );
 }
 
 export default Button;
 
-
-//Activate below for bootstrap styling
+// Activate below for bootstrap styling
 
 // import React from "react";
 // import styles from "../allCssStyling/Button.module.css";
 
 // import Button from "react-bootstrap/Button";
-// // Importing the Bootstrap CSS
+// Importing the Bootstrap CSS
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 // function Button2({ onClick, label }) {
