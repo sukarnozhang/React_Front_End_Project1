@@ -1,11 +1,12 @@
 // Cart.js
 
 import { useContext } from "react";
-import { ShopContext } from "../context/shopcontext";
-import PRODUCTS from "../DummyList";
 import { useNavigate } from "react-router-dom";
-import CartItem from "./CartItems";
+import PRODUCTS from "../DummyList";
 import styles from "../allCssStyling/Cart.modules.css";
+import { ShopContext } from "../context/shopcontext";
+import CartItem from "./CartItems";
+import Receipe from "./Receipe";
 
 function Cart() {
   const { cartItems, getTotalCartAmount, checkout } = useContext(ShopContext);
@@ -14,7 +15,7 @@ function Cart() {
   const navigate = useNavigate();
 
   return (
-    <div className="cart">
+    <div className={styles.cart}>
       <div>
         <h1>Your Cart Items</h1>
       </div>
@@ -33,7 +34,7 @@ function Cart() {
           <button onClick={() => navigate("/payment")}> Checkout </button>
         </div>
       ) : (
-        <h1>Shopping Cart is Empty</h1>
+        <Receipe />
       )}
     </div>
   );
