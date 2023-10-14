@@ -1,0 +1,63 @@
+recipe-container {
+    background-color: hsl(326, 74%, 46%);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Recipe Title */
+  .recipe-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family:'Times New Roman', Times, serif;;
+    color: rgb(15, 11, 241);
+  }
+  
+  /* Ingredients List */
+  .ingredients-list {
+    margin-left: 20px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  /* Ingredient Item */
+  .ingredients-list li {
+    margin: 5px 0;
+  }
+  
+  /* Instructions */
+  .instructions {
+    margin-top: 20px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  }
+  
+  /* Instruction Step */
+  .instructions p {
+    margin: 10px 0;
+  }
+  
+  /* Recipe Image */
+  .recipe-image {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #8d1414;
+    border-radius: 5px;
+    object-fit: cover;
+    object-position: center top;
+}
+
+  .button {
+    background-color: hsl(128, 100%, 50%);
+    color: hsl(279, 94%, 50%);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor:;
+  }
+  
+  /* Hover effect for buttons */
+  .button:hover {
+    background-color: #0056b3;
+  }
