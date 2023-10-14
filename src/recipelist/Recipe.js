@@ -72,11 +72,16 @@ const DetailWrapper = styled.div`
   }
 
   img {
-    border-radius: 2rem;
+    border-radius: 20px;
+    padding: 1rem;
+    padding-left" 1rem;
+    margin-left: 1rem;
   }
 
   h2 {
     margin-bottom: 2rem;
+    padding: 1rem;
+    margin-left: 1rem;
   }
 
   li {
@@ -87,6 +92,7 @@ const DetailWrapper = styled.div`
   ul {
     margin-top: 2rem;
   }
+
 `;
 
 const Button = styled.button`
@@ -105,6 +111,7 @@ const Button = styled.button`
 
 const Info = styled.div`
   margin-left: 10rem;
+  margin-right: 10rem;
 `;
 
 export default Recipe;

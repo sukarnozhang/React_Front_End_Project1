@@ -55,7 +55,7 @@ const SLink = styled(NavLink)`
   background-color: white; /* Green */
   border: 2px solid; /* Default border color */
   color: #662eed;
-  padding: 15px 30px;
+  padding: 30px 30px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -63,6 +63,7 @@ const SLink = styled(NavLink)`
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 20px;
+  margin-top:10rem;
 
   svg {
     color: #662eed;

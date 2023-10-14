@@ -8,7 +8,7 @@ import {
 import styled from "styled-components";
 
 // This value is from the props in the UI
-const style = { layout: "vertical" };
+const style = { layout: "horizontal" };
 
 function createOrder() {
   // replace this url with your server
@@ -78,9 +78,9 @@ const ButtonWrapper = ({ showSpinner }) => {
 
 function PayPal() {
   return (
-    <div style={{ maxWidth: "750px", minHeight: "200px" }}>
+    <div style={{ maxWidth: "750px", minHeight: "200px", alignContent: "center" }}>
       <PayPalScriptProvider
-        options={{ clientId: "test", components: "buttons", currency: "USD" }}
+        options={{ clientId: "test", components: "buttons", currency: "SGD" }}
       >
         <ButtonWrapper showSpinner={false} />
       </PayPalScriptProvider>
