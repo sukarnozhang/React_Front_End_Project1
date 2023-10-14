@@ -1,0 +1,54 @@
+//From YaoRong
+
+import axios from 'axios';
+import React, { useContext, useState } from 'react';
+import { ShopContext } from "../context/shopcontext";
+
+const RecipeSearch = () => {
+    const [searchQuery, setSearchQuery] = useState('');
+    const [recipes, setRecipes] = useState([]);
+    const { cartItems } = useContext(ShopContext);
+
+    const handleSearchInputChange = (e) => {
+        setSearchQuery(e.target.value);
+    }
+
+    const handleSearch = () => {
+        if (!cartItems) return;
+
+        const appId = process.env.REACT_APP_RECEIPE_APP_ID;
+        const appKey = process.env.REACT_APP_RECEIPE_APP_KEY;
+        // const searchQuery2 = cartItems.productName;
+        const endpoint = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchQuery}&app_id=${appId}&app_key=${appKey}`;
+
+        axios.get(endpoint)
+            .then(response => {
+                const recipes = response.data.hits.map(hit => hit.recipe);
+                setRecipes(recipes);
+            })
+            .catch(error => {
+                console.error('Error fetching recipes:', error);
+            });
+    }
+
+    return (
+        <div>
+            <h1>Recipe Search</h1>
+            <input
+                type="text"
+                placeholder="Enter an ingredient to search for recipes"
+                onChange={handleSearchInputChange}
+            />
+            <button onClick={handleSearch}>Search</button>
+
+            <h2>Recipes:</h2>
+            <ul>
+                {recipes.map((recipe, index) => (
+                    <li key={index}>{recipe.label}<br /><a href={recipe.url} target="_blank" rel="noreferrer"><img src={recipe.images.REGULAR.url} /></a></li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+
+export default RecipeSearch;

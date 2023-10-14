@@ -11,7 +11,7 @@ function Ingredients() {
 
   const getIngredients = async (name) => {
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=deb54138ae1b4a7f9b6ff3b539554ada&includeIngredients=${name}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&includeIngredients=${name}&number=12`
     );
     const recipes = await data.json();
     setIngredients(recipes.results);
@@ -56,7 +56,15 @@ const Card = styled.div`
     borderRadius: 150 / 2,
     overflow: "hidden",
     borderWidth: 3,
-  }
+
+.image {
+  flex-bassis: 40%
+}
+
+.text {
+  font-size: 20px;
+  padding-left: 20px;
+}
 
   a {
     text-decoration: none;

@@ -1,11 +1,12 @@
-// Cart.js
+// Cart.jsss
 
 import { useContext } from "react";
-import { ShopContext } from "../context/shopcontext";
-import PRODUCTS from "../DummyList";
 import { useNavigate } from "react-router-dom";
-import CartItem from "./CartItems";
+import PRODUCTS from "../DummyList";
 import styles from "../allCssStyling/Cart.modules.css";
+import { ShopContext } from "../context/shopcontext";
+import CartItem from "./CartItems";
+//import Receipe from "./Receipe";      //YaoRong code
 
 function Cart() {
   const { cartItems, getTotalCartAmount, checkout } = useContext(ShopContext);
@@ -34,6 +35,7 @@ function Cart() {
         </div>
       ) : (
         <h1>Shopping Cart is Empty</h1>
+        // <Receipe />  //YaoRong code
       )}
     </div>
   );
