@@ -11,7 +11,7 @@ function Ingredients() {
 
   const getIngredients = async (name) => {
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=90d72e8507a64cf29e7a9e752eb54c10&includeIngredients=${name}&number=3`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&includeIngredients=${name}&number=3`
     );
     const recipes = await data.json();
     setIngredients(recipes.results);

@@ -3,7 +3,7 @@
 import { FaAppleAlt, FaCarrot, FaInfinity } from "react-icons/fa";
 import { GiRoastChicken } from "react-icons/gi";
 import styled from "styled-components";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Category() {
   return (
