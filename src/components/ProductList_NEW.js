@@ -1,6 +1,6 @@
 // Shop.js
 
-//import { PRODUCTS }  from "../DummyList";
+import { PRODUCTS }  from "../DummyList";
 //import { ProductList }  from "../components/ProductList";
 import Product from "./Product";
 import styles from "../allCssStyling/Shop.modules.css";
@@ -33,7 +33,8 @@ function ProductList_NEW() {
 
   const getAllProducts = async () => {
     try {
-      const response = await soonToExpireAPI.get("/products");
+      //const response = await soonToExpireAPI.get("/products");
+      const response = await PRODUCTS.get("/products");
       console.log(response.data);
       setProducts(response.data);
 
