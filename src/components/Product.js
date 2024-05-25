@@ -1,5 +1,3 @@
-// Product.js
-
 import { useContext } from "react";
 import { ShopContext } from "../context/shopcontext";
 
@@ -24,7 +22,5 @@ function Product(props) {
     </div>
   );
 }
-
-//
 
 export default Product;

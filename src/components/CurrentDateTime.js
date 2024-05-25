@@ -17,17 +17,6 @@ function CurrentDateTime(props) {
     props.sendDataToParent(Date.parse(currentDateTime.toLocaleDateString())); //.toLocalDateString -> returns only date
   }, []);                                                                     //.toLocalString -> returns time & date
 
-
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setCurrentDateTime(new Date());
-  //   }, 1000); // Update every second
-
-  //   return () => {
-  //     clearInterval(timer); // Cleanup
-  //   };
-  // }, []);
-
   return (
     <div>
       <p className={styles.currentDateTime}>

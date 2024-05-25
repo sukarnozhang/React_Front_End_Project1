@@ -1,27 +1,13 @@
-// Shop.js
-
-import { PRODUCTS }  from "../DummyList";
-//import { ProductList }  from "../components/ProductList";
+import { PRODUCTS } from "../DummyList";
 import Product from "./Product";
-import styles from "../allCssStyling/Shop.modules.css";
-//import ProductList from './ProductList'
-import ShopContextProvider from "../context/shopcontext";
 import Shop from "./Shop.js.bakk";
-
-//ProductList.js        // add by weicong - Render the product list
 import { useState, useEffect } from "react";
-import soonToExpireAPI from "../api/soonToExpireAPI.js";
+//import soonToExpireAPI from "../api/soonToExpireAPI.js";
 import CurrentDateTime from "./CurrentDateTime";
 import SearchItem from "./SearchItem";
 import Button2 from "./Button";
-import { NavLink } from "react-router-dom";
-import { FaAppleAlt, FaCarrot, FaInfinity } from "react-icons/fa";
-import { GiRoastChicken } from "react-icons/gi";
-//import ProductList from './ProductList';
 
 function ProductList_NEW() {
-  //const currentDate = new Date();
-
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [filteredItems, setFilteredItems] = useState([]); //used for rendering only
@@ -35,11 +21,12 @@ function ProductList_NEW() {
     try {
       //const response = await soonToExpireAPI.get("/products");
       const response = await PRODUCTS.get("/products");
+      console.log("my products is")
       console.log(response.data);
       setProducts(response.data);
 
-      //console.log("Expiry date format:", typeof response.data[0].expiryDate);     //used the parse method to convert it to number
-      console.log("GET all products completed!");
+      //used the parse method to convert it to number
+      console.log("GET all products completed2!");
     } catch (error) {
       console.log("❌ Get all products error: " + error.message);
     }
@@ -52,7 +39,6 @@ function ProductList_NEW() {
 
   const handleSearchItem = (value) => {
     setSearchItem(value);
-
     const myProductList = [...products];
     setIsLoading(true);
     if (products.length >= 1) {
@@ -68,8 +54,7 @@ function ProductList_NEW() {
   };
 
   const handleCategoryAll = () => {
-    const myProductList = [...products]; //copy the products from useState into our local variable due to the async nature. Scare it will be empty
-
+    const myProductList = [...products]; //copy the products from useState into our local variable due to the async nature.
     if (products.length >= 1) {
       setFilteredItems(myProductList);
       console.log("All Items:", myProductList);
@@ -87,8 +72,6 @@ function ProductList_NEW() {
 
     if (products.length >= 1) {
       const fruits = myProductList.filter((item) => item.category === "fruit"); // Filter items based on the selected category
-      // setFilteredItems(fruits);
-      // console.log("Fruits:", fruits);
       setFilteredItems(fruits);
       console.log("Fruits", fruits);
       if (fruits.length === 0) {
@@ -108,8 +91,6 @@ function ProductList_NEW() {
 
     if (products.length >= 1) {
       const meats = myProductList.filter((item) => item.category === "meat");
-      // setFilteredItems(meats);
-      // console.log("Meats:", meats);
       setFilteredItems(meats);
       console.log("Meats", meats);
       if (meats.length === 0) {
@@ -171,7 +152,6 @@ function ProductList_NEW() {
     const oneMonth = 2592000000;
     const soonToExpireItems = [];
 
-    //if(expiryMonth===true) {setExpiryButton(false);}
     if (products.length >= 1) {
       setExpiryMonth(true);
       //if we you map methodm it'll requires a uuid which is from the api...
@@ -242,16 +222,15 @@ function ProductList_NEW() {
         <h1>Food Waste Reducer App</h1>
       </div>
 
-      <Shop 
-        products={products} 
-        filteredItems={filteredItems} 
-        setSearchItem={searchItem} 
+      <Shop
+        products={products}
+        filteredItems={filteredItems}
+        setSearchItem={searchItem}
         expiryMonth={expiryMonth}
         todayDate={todayDate}
         soonToExpireItems={soonToExpireItems}
       />
 
-      {/* weicong - added the SearchItem & <button> tag */}
       {console.log("Child data from CurrentDateTime:", todayDate)}
       <CurrentDateTime sendDataToParent={receiveDataFromChild} />
 
@@ -282,14 +261,11 @@ function ProductList_NEW() {
 
       <div className="products">
         {filteredItems.map((filteredItems) => (
-          <Product data={filteredItems} key={filteredItems.id} /> //weicong - Add the id to the key for every items in the list. This is a React requirement
+          <Product data={filteredItems} key={filteredItems.id} />
         ))}
       </div>
-      {/* <ShopContextProvider filteredItems={filteredItems} products={products}/> */}
     </div>
   );
 }
-
-//
 
 export default ProductList_NEW;

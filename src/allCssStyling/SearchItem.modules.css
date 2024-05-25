@@ -20,27 +20,9 @@
   width:200px;
 }
 
-/* magnifying-icon for search input */
-/* .search-items-container {
-  position: relative;
-} */
-
 .search-input {
   padding-right: 50px; /* Adjust as needed */  
 }
-
-
-/* old code
-.search-icon{
-  position: absolute;
-  top: 150px;
-  left: 325px; 
-  transform: translateY(-50%);
-  cursor: pointer;
-  padding: 5px 10px;
-  width: 100%;    
-} */
-
 
 #responsive-icon {
   width: auto;

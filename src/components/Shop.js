@@ -38,11 +38,12 @@ function Shop() {
   const getAllProducts = async () => {
     try {
       const response = await soonToExpireAPI.get("/products");
+      console.log(response)
       console.log(response.data);
       setProducts(response.data);
 
       //console.log("Expiry date format:", typeof response.data[0].expiryDate);     //used the parse method to convert it to number
-      console.log("GET all products completed!");
+      console.log("GET all products completed2!");
     } catch (error) {
       console.log("❌ Get all products error: " + error.message);
     }

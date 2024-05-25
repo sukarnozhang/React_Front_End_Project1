@@ -1,5 +1,3 @@
-// Category.js
-
 import { FaAppleAlt, FaCarrot, FaInfinity } from "react-icons/fa";
 import { GiRoastChicken } from "react-icons/gi";
 import styled from "styled-components";
@@ -63,7 +61,7 @@ const SLink = styled(NavLink)`
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 20px;
-  margin-top:10rem;
+  margin-top: 10rem;
 
   svg {
     color: #662eed;

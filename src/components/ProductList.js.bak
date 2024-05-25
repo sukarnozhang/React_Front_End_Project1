@@ -25,7 +25,7 @@ function ProductList() {
       setProducts(response.data);
 
       console.log("Expiry date format:", typeof response.data[0].expiryDate);
-      console.log("GET all products completed!");
+      console.log("GET all products completed2!");
     } catch (error) {
       console.log("❌ Get all products error: " + error.message);
     }
