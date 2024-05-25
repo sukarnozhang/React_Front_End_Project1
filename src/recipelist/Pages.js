@@ -1,4 +1,4 @@
-// Pages.js
+// Router to the more details recipes
 
 import Ingredients from "./Ingredients";
 import Recipe from "./Recipe";

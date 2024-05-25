@@ -2,23 +2,15 @@
 
 import axios from "axios";
 import { useState, useEffect } from "react";
-//import { PRODUCTS }  from "../DummyList";
-//import { ProductList }  from "../components/ProductList";
-//import ProductList from './ProductList'
 import styles from "../allCssStyling/Shop.modules.css";
-//import ShopContextProvider from "../context/shopcontext";
 import Product from "./Product";
 import soonToExpireAPI from "../api/soonToExpireAPI.js";
 import CurrentDateTime from "./CurrentDateTime";
 import SearchItem from "./SearchItem";
 import Button from "./Button";
 import Logo from "../logo";
-// import { NavLink } from "react-router-dom";
-// import { FaAppleAlt, FaCarrot, FaInfinity } from "react-icons/fa";
-// import { GiRoastChicken } from "react-icons/gi";
 
 function Shop() {
-  //const currentDate = new Date();
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [filteredItems, setFilteredItems] = useState([]); //used for rendering only

@@ -1,6 +1,6 @@
 // SearchItem.js
 
-import React from "react";
+//import React from "react";
 import styles from "../allCssStyling/SearchItem.modules.css";
 import { MagnifyingGlass } from "phosphor-react";
 
