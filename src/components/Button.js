@@ -1,11 +1,9 @@
-import React from "react";
+// Child Components served as //
+//import React from "react";
 import styles from "../allCssStyling/Button.module.css";
 
 function Button({ onClick, label }) {
-  
-  const handleClick = () => {
-
-  };
+  const handleClick = () => {};
 
   return (
     <>

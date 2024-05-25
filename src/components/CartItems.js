@@ -1,12 +1,11 @@
-// CartItems.js
+// Individual Items displaying image, price at the payment tab
 
 import { useContext } from "react";
 import { ShopContext } from "../context/shopcontext";
 
 function CartItem(props) {
   const { id, productName, price, productImage } = props.data;
-  const { cartItems, addToCart, removeFromCart, updateCartItemCount } =
-    useContext(ShopContext);
+  const { cartItems, addToCart, removeFromCart, updateCartItemCount } = useContext(ShopContext);
 
   return (
     <div className="cartItem">

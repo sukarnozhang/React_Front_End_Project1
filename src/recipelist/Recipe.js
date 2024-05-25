@@ -1,4 +1,4 @@
-// Recipe.js
+// Individual Recipes with all the details
 
 import { useState, useEffect } from "react";
 import styled from "styled-components";

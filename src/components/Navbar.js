@@ -1,3 +1,5 @@
+// Purple Navigation Bar at the top
+
 import { Link } from "react-router-dom";
 import { BookBookmark, House, ShoppingCart } from "phosphor-react";
 import styles from "../allCssStyling/Navbar.modules.css";

@@ -2,26 +2,23 @@
 
 import axios from "axios";
 import { useState, useEffect } from "react";
-
 //import { PRODUCTS }  from "../DummyList";
 //import { ProductList }  from "../components/ProductList";
 //import ProductList from './ProductList'
 import styles from "../allCssStyling/Shop.modules.css";
-import ShopContextProvider from "../context/shopcontext";
-
+//import ShopContextProvider from "../context/shopcontext";
 import Product from "./Product";
 import soonToExpireAPI from "../api/soonToExpireAPI.js";
 import CurrentDateTime from "./CurrentDateTime";
 import SearchItem from "./SearchItem";
-import Button2 from "./Button";
+import Button from "./Button";
 import Logo from "../logo";
-import { NavLink } from "react-router-dom";
-import { FaAppleAlt, FaCarrot, FaInfinity } from "react-icons/fa";
-import { GiRoastChicken } from "react-icons/gi";
+// import { NavLink } from "react-router-dom";
+// import { FaAppleAlt, FaCarrot, FaInfinity } from "react-icons/fa";
+// import { GiRoastChicken } from "react-icons/gi";
 
 function Shop() {
   //const currentDate = new Date();
-
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [filteredItems, setFilteredItems] = useState([]); //used for rendering only
@@ -29,40 +26,41 @@ function Shop() {
   const [expiryMonth, setExpiryMonth] = useState(false); //used this state to track if user clicked on the expiry month
   const [todayDate, setTodayDate] = useState("");
   const [soonToExpireItems, setSoonToExpireItems] = useState([]); //used for sharing the value around
-  const [expiryButton, setExpiryButton] = useState(true);
+  //const [expiryButton, setExpiryButton] = useState(true);
   const [recipes, setRecipes] = useState([]);
+
+  // store the value of months in digits
   const oneMonth = 2592000000;
   const twoMonth = 5184000000;
   const threeMonth = 7776000000;
 
+  // To get all products from the API
   const getAllProducts = async () => {
     try {
-      const response = await soonToExpireAPI.get("/products");
-      console.log(response)
-      console.log(response.data);
+      const response = await soonToExpireAPI.get(`https://651b9a0a194f77f2a5ae9b01.mockapi.io/products`);
       setProducts(response.data);
-
-      //console.log("Expiry date format:", typeof response.data[0].expiryDate);     //used the parse method to convert it to number
       console.log("GET all products completed2!");
     } catch (error) {
       console.log("❌ Get all products error: " + error.message);
     }
   };
 
+  // Use effect to get all products for every render
   useEffect(() => {
     console.log("Effect running");
     getAllProducts();
   }, []);
 
+  // Search Bar
   const handleSearchItem = (value) => {
     const appId = process.env.REACT_APP_RECEIPE_APP_ID;
     const appKey = process.env.REACT_APP_RECEIPE_APP_KEY;
-    setSearchItem(value);
-
     const myProductList = [...products];
+    setSearchItem(value);
     setIsLoading(true);
+
+    //filter the products accordingly
     if (products.length >= 1) {
-      console.log("Typing:", value);
       const searchResult = myProductList.filter(
         (item) => item.item.toLowerCase() === value.toLowerCase()
       );
@@ -72,6 +70,7 @@ function Shop() {
       console.log("products is empty");
     }
 
+    //filter the recipes accordingly
     const endpoint = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchItem}&app_id=${appId}&app_key=${appKey}`;
     axios
       .get(endpoint)
@@ -85,9 +84,9 @@ function Shop() {
     console.log("my returned recipes:", recipes);
   };
 
+  // Show All Items
   const handleCategoryAll = () => {
-    const myProductList = [...products]; //copy the products from useState into our local variable due to the async nature. Scare it will be empty
-
+    const myProductList = [...products];
     if (products.length >= 1) {
       setFilteredItems(myProductList);
       console.log("All Items:", myProductList);
@@ -96,6 +95,7 @@ function Shop() {
     }
   };
 
+  // Show Fruits Only
   const handleCategoryFruit = () => {
     let myProductList = [];
     console.log("is expiry button clicked:", expiryMonth);
@@ -104,9 +104,7 @@ function Shop() {
       : (myProductList = [...products]);
 
     if (products.length >= 1) {
-      const fruits = myProductList.filter((item) => item.category === "fruit"); // Filter items based on the selected category
-      // setFilteredItems(fruits);
-      // console.log("Fruits:", fruits);
+      const fruits = myProductList.filter((item) => item.category === "fruit");
       setFilteredItems(fruits);
       console.log("Fruits", fruits);
       if (fruits.length === 0) {
@@ -117,6 +115,7 @@ function Shop() {
     }
   };
 
+  // Show Meats Only
   const handleCategoryMeat = () => {
     let myProductList = [];
     console.log("is expiry button clicked:", expiryMonth);
@@ -126,8 +125,6 @@ function Shop() {
 
     if (products.length >= 1) {
       const meats = myProductList.filter((item) => item.category === "meat");
-      // setFilteredItems(meats);
-      // console.log("Meats:", meats);
       setFilteredItems(meats);
       console.log("Meats", meats);
       if (meats.length === 0) {
@@ -138,6 +135,7 @@ function Shop() {
     }
   };
 
+  // Show Vegetable only
   const handleCategoryVegetable = () => {
     let myProductList = [];
     console.log("is expiry button clicked:", expiryMonth);
@@ -159,6 +157,7 @@ function Shop() {
     }
   };
 
+  // Show other categories only
   const handleCategoryOthers = () => {
     let myProductList = [];
     console.log("is expiry button clicked:", expiryMonth);
@@ -184,15 +183,14 @@ function Shop() {
     setTodayDate(data);
   };
 
+  // To show expiry date in 30 days
   const handleExpiry30Days = () => {
     const myProductList = [...products];
     const soonToExpireItems = [];
 
-    //if(expiryMonth===true) {setExpiryButton(false);}
     if (products.length >= 1) {
       setExpiryMonth(true);
-      //if we you map methodm it'll requires a uuid which is from the api...
-      //const expireIn30days = myProductList.map((item) => ((Date.parse(item.expiryDate) - todayDate) <= 9999999999));
+
       for (let i = 0; i < myProductList.length - 1; i++) {
         if (Date.parse(myProductList[i].expiryDate) - todayDate <= oneMonth) {
           soonToExpireItems.push(myProductList[i]);
@@ -207,6 +205,7 @@ function Shop() {
     }
   };
 
+  // To show expiry date in 60 days
   const handleExpiry60Days = () => {
     const myProductList = [...products];
     const soonToExpireItems = [];
@@ -229,6 +228,7 @@ function Shop() {
     }
   };
 
+  // To show expiry date in 90 days
   const handleExpiry90Days = () => {
     const myProductList = [...products];
     const soonToExpireItems = [];
@@ -241,8 +241,8 @@ function Shop() {
         ) {
           soonToExpireItems.push(myProductList[i]);
         }
-        setSoonToExpireItems(soonToExpireItems); //to store the items in state so it can be pass around
-        setFilteredItems(soonToExpireItems); //for rendering the display of items expiry = 30days
+        setSoonToExpireItems(soonToExpireItems);
+        setFilteredItems(soonToExpireItems);
       }
       console.log("3 month expiry:", soonToExpireItems);
       console.log("is expiry button clicked?", expiryMonth);
@@ -256,8 +256,6 @@ function Shop() {
       <div className="shopTitle">
         <Logo />
       </div>
-
-      {/* weicong - added the SearchItem & <button> tag */}
       {console.log("Child data from CurrentDateTime:", todayDate)}
       <CurrentDateTime sendDataToParent={receiveDataFromChild} />
 
@@ -265,30 +263,30 @@ function Shop() {
         <SearchItem onChange={handleSearchItem} />
         <br />
         <div className="expireDate">
-          <Button2
+          <Button
             label="Expired in 1 months"
             onClick={() => handleExpiry30Days()}
           />
-          <Button2
+          <Button
             label="Expired in 2 months"
             onClick={() => handleExpiry60Days()}
           />
-          <Button2
+          <Button
             label="Expired in 3 months"
             onClick={() => handleExpiry90Days()}
           />
         </div>
         <br />
-        <Button2 label="All items" onClick={() => handleCategoryAll()} />
-        <Button2 label="Fruits" onClick={() => handleCategoryFruit()}></Button2>
-        <Button2 label="Meats" onClick={() => handleCategoryMeat()} />
-        <Button2 label="Vegetables" onClick={() => handleCategoryVegetable()} />
-        <Button2 label="Others" onClick={() => handleCategoryOthers()} />
+        <Button label="All items" onClick={() => handleCategoryAll()} />
+        <Button label="Fruits" onClick={() => handleCategoryFruit()}></Button>
+        <Button label="Meats" onClick={() => handleCategoryMeat()} />
+        <Button label="Vegetables" onClick={() => handleCategoryVegetable()} />
+        <Button label="Others" onClick={() => handleCategoryOthers()} />
       </div>
 
       <div className="products">
         {filteredItems.map((filteredItems) => (
-          <Product data={filteredItems} key={filteredItems.id} /> //weicong - Add the id to the key for every items in the list. This is a React requirement
+          <Product data={filteredItems} key={filteredItems.id} />
         ))}
       </div>
 
@@ -309,7 +307,6 @@ function Shop() {
           ))}
         </ul>
       </div>
-      {/* <ShopContextProvider filteredItems={filteredItems} products={products}/> */}
     </div>
   );
 }

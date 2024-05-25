@@ -1,3 +1,5 @@
+// individual items at the home page : image, add button
+
 import { useContext } from "react";
 import { ShopContext } from "../context/shopcontext";
 

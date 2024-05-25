@@ -18,6 +18,4 @@ function Pages() {
   );
 }
 
-// might not need to use this component
-
 export default Pages;

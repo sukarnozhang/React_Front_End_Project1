@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "../allCssStyling/CurrentDateTime.module.css";
-
+//import styles from "../allCssStyling/CurrentDateTime.module.css";
 
 function CurrentDateTime(props) {
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
@@ -19,7 +18,7 @@ function CurrentDateTime(props) {
 
   return (
     <div>
-      <p className={styles.currentDateTime}>
+      <p>
         {/* Current Date (MM/DD/YYYY): {currentDateTime.toLocaleDateString()} */}
 
         {/* To display date & time use this code below: */}

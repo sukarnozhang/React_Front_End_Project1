@@ -1,6 +1,6 @@
-// shopcontext.js
+// use context to pass amount of items ordered
 
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import PRODUCTS from "../DummyList";
 export const ShopContext = createContext(null);
 
@@ -57,7 +57,5 @@ function ShopContextProvider(props) {
     </ShopContext.Provider>
   );
 }
-
-//
 
 export default ShopContextProvider;

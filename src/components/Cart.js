@@ -1,3 +1,5 @@
+// The main Cart Page
+
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import PRODUCTS from "../DummyList";
